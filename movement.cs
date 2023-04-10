@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float speed= 10f;
-    public float jump = 5f;
-    private Rigidbody2D rb;
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         
     }
 
@@ -18,16 +15,8 @@ public class movement : MonoBehaviour
     void Update()
     {
         float x_dir = Input.GetAxis("Horizontal");
-        bool b_press = Input.GetKey("b");
-        Vector2 curr_pos = new Vector2(transform.position.x, transform.position.y);
-        transform.position = new Vector2(curr_pos.x + speed * Time.deltaTime * x_dir, curr_pos.y);
-        if (b_press)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jump);
-        }
-
-
-
+        float y_dir = Input.GetAxis("Vertical");
+        transform.position = new Vector2(transform.position.x + speed * Time.deltaTime * x_dir, transform.position.y + speed * Time.deltaTime * y_dir); 
         
     }
 }
